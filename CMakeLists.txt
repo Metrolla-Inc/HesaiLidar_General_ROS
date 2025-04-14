@@ -58,6 +58,7 @@ target_link_libraries(PandarGeneral
     Boost::thread
     pcap
 )
+add_dependencies(PandarGeneral ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
 ###PandarGeneralSDK
 add_library(PandarGeneralSDK SHARED
@@ -84,6 +85,7 @@ target_link_libraries(PandarGeneralSDK
     Boost::thread
     pcap
 )
+add_dependencies(PandarGeneralSDK ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
 ###hesai node
 add_executable(hesai_lidar_node
@@ -103,6 +105,7 @@ target_link_libraries(hesai_lidar_node
     ${PCL_IO_LIBRARIES}
     PandarGeneralSDK
 )
+add_dependencies(hesai_lidar_node ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
 add_library(cloud_nodelet src/cloud_nodelet.cc)
 
@@ -119,6 +122,7 @@ target_link_libraries(cloud_nodelet
     ${PCL_IO_LIBRARIES}
     PandarGeneralSDK
 )
+add_dependencies(cloud_nodelet ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 
 install(TARGETS
     hesai_lidar_node
